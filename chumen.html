@@ -101,7 +101,7 @@
                 <p style="font-size: 34px;margin-top: 24px;">开始 : <span><span id="time5">2020-11-27</span> 07:00</span></p>
                 <p style="font-size: 34px;margin-top: 24px;">结束 : <span><span id="time6">2020-11-27</span> 23:00</span></p>
             </div>
-            <img src="https://outoutsx.oss-cn-beijing.aliyuncs.com/1.jpg?Expires=1625899053&OSSAccessKeyId=TMP.3KgnRVNEc5qB5NGLXm181NQq1yTSJVRqpyLbg4ebX5g41YH2rPQh9v5tSiyJpq7eL6cyzgD3wHMBKDvRVxU6DYVcTvezUB&Signature=7ZtcvIruAjazjaET1eTeY2LU9nY%3D&versionId=CAEQEBiBgMDFlde71BciIDFkODRjY2JkMjE2OTRjZDJhZTljMWE5M2MxZmJjZDM4&response-content-type=application%2Foctet-stream" height="380" width="295">
+            <img src="img/1.jpg" height="380" width="295">
         </div>
         <div class="bg_bos">
             <div style="width: 600px;height: 600px">
@@ -125,7 +125,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
 function makeCode () {	
 	var elText = document.getElementById("text");
-	htmlobj=$.ajax({url:"//noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', async:false});
+	htmlobj=$.ajax({url:"http://noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', async:false});
 	var data=JSON.parse(htmlobj.responseText);
 	var text = data.msg;
 	qrcode.makeCode(text);
