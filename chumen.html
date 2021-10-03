@@ -1,13 +1,15 @@
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=0,maximum-scale=0.4,user-scalable=no" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="qrcode.js"></script>
-    <title>学生外出请假</title>
+    <title class="title1">外出登记</title>
     <style>
 		.mui-ios header{
 		
 		padding-top: 8px !important;
+		
 		}
 		
 		.mui-android header{
@@ -74,8 +76,8 @@
         }
         .second{
             font-family: "Raleway", sans-serif;
-            font-size: 140px;
-            font-weigh:1000;
+            font-size: 120px;
+            font-weigh:900;
             color: rgb(252,42,51);
             text-shadow: rgb(128,40,36) 10px 10px 10px;
             -webkit-text-stroke: 4px rgb(255,250,23);
@@ -84,9 +86,13 @@
             /*position: absolute;*/
             /*top: 50%;*/
             /*left: 50%;*/
-            margin-top: 250px;
+            margin-top: 230px;
             /*margin-left: -180px;*/
-        }  
+        }
+		.title1{
+			margin-left: 0px;
+			font-size: 120px;
+		}
     </style>
 </head>
 <body rlt="1">
@@ -94,16 +100,16 @@
     <main class="main">
         <div class="top_box">
             <div>
-                <p style="font-size: 50px"><strong>武键国</strong></p>
+                <p style="font-size: 50px"><strong>武建国</strong></p>
                 <p style="font-size: 34px;margin-top: 34px;">学号 : 202022409058</p>
                 <p style="font-size: 34px;margin-top: 24px;">班级 : 电子信息</p>
                 <p style="font-size: 34px;margin-top: 24px;">开始 : <span><span id="time5">2020-11-27</span> 07:00</span></p>
                 <p style="font-size: 34px;margin-top: 24px;">结束 : <span><span id="time6">2020-11-27</span> 23:00</span></p>
             </div>
-            <img src="img/1.jpg" height="380" width="295">
+            <img src="" height="380" width="295">
         </div>
         <div class="bg_bos">
-            <div style="width: 700px;height: 700px">
+            <div style="width: 600px;height: 600px">
                 <div style="position: absolute;left: 25px;" id="qrcode"></div>
                 <h1 class="second"><span id="second">180</span>S</h1>
             </div>
@@ -116,18 +122,23 @@
 
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 650,
-	height : 650,
+	width : 550,
+	height : 550,
 	colorDark:"green",
 	colorLight:"white",
 });
 
 function makeCode () {	
-	var elText = document.getElementById("text");
-	htmlobj=$.ajax({url:"http://noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', headers: {Referer: 'http://noleave.sxu.edu.cn/dj/'},async:false});
-	var data=JSON.parse(htmlobj.responseText);
-	var text = data.msg;
-	qrcode.makeCode(text);
+	var loc = location.href;
+	var n1 = loc.length;
+	var n2 = loc.indexOf('=');
+	var txt = decodeURI(loc.substr(n2+1,n1-n2));
+	console.log(txt);
+	//var elText = document.getElementById("text");
+	//htmlobj=$.ajax({url:"https://www.1xiaowu.com:8009/getRandom", type: 'POST', async:false});
+	//var data=JSON.parse(htmlobj.responseText);
+	//var text = data.msg;
+	qrcode.makeCode(txt);
 }
 
 makeCode();
