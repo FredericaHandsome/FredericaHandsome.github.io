@@ -124,7 +124,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
 function makeCode () {	
 	var elText = document.getElementById("text");
-	htmlobj=$.ajax({url:"http://noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', async:false});
+	htmlobj=$.ajax({url:"http://noleave.sxu.edu.cn/jcforms/plus/api/getRandom", type: 'POST', headers: {Referer: 'http://noleave.sxu.edu.cn/dj/'},async:false});
 	var data=JSON.parse(htmlobj.responseText);
 	var text = data.msg;
 	qrcode.makeCode(text);
